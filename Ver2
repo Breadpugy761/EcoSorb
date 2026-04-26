@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecosorb — Biodegradable Desiccant</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark:  #1a4a2e;
+  --green-mid:   #2d7a4f;
+  --green-light: #4caf72;
+  --green-pale:  #e8f5ed;
+  --green-tint:  #f2faf5;
+  --white:       #ffffff;
+  --gray-50:     #f8f9f8;
+  --gray-100:    #f0f1f0;
+  --gray-200:    #e2e4e2;
+  --gray-400:    #9ca89c;
+  --gray-600:    #5a665a;
+  --gray-800:    #2a322a;
+  --text:        #1c241c;
+  --border:      #dde5dd;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Manrope', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* ── ANNOUNCEMENT BAR ───────────────────────────────── */
+.announce-bar {
+  background: var(--green-dark);
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  letter-spacing: 0.3px;
+}
+.announce-bar strong { color: #7dd99a; }
+
+/* ── NAV ────────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 1.35rem;
+  color: var(--green-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-logo .logo-icon {
+  width: 32px; height: 32px;
+  background: var(--green-dark);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-links a:hover { color: var(--green-dark); background: var(--green-tint); }
+.nav-right { display: flex; align-items: center; gap: 0.75rem; }
+.btn-nav-cta {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.52rem 1.25rem;
+  border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
+}
+.btn-nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+/* ── HERO ───────────────────────────────────────────── */
+.hero {
+  background: var(--green-tint);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 2.5rem 4.5rem;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-section {
+  background: var(--green-tint);
+  border-bottom: 1px solid var(--border);
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--green-pale);
+  border: 1px solid #b2dfc0;
+  color: var(--green-mid);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  margin-bottom: 1.4rem;
+}
+.hero-badge .dot { width: 6px; height: 6px; background: var(--green-light); border-radius: 50%; }
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--green-dark);
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+}
+.hero h1 em { font-style: italic; color: var(--green-mid); }
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: var(--green-dark);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.8rem 1.75rem;
+  border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
+  box-shadow: 0 2px 10px rgba(26,74,46,0.2);
+}
+.btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+.btn-outline {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.8rem 1.75rem;
+  border-radius: 8px;
+  border: 1.5px solid var(--green-dark);
+  transition: background 0.15s;
+}
+.btn-outline:hover { background: var(--green-pale); }
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+.trust-item .check { color: var(--green-light); font-size: 0.9rem; }
+
+/* Hero product card */
+.hero-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 40px rgba(26,74,46,0.08), 0 2px 8px rgba(0,0,0,0.04);
+}
+.product-visual {
+  background: var(--green-pale);
+  border-radius: 12px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.product-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 30%, rgba(77,175,114,0.15), transparent 60%);
+}
+.product-orb {
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-dark) 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  box-shadow: 0 12px 40px rgba(26,74,46,0.35);
+  position: relative; z-index: 1;
+}
+.product-orb-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 900; font-size: 1.5rem;
+  color: var(--white); line-height: 1;
+  text-align: center;
+}
+.product-orb-sub {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.product-meta { padding-top: 0.5rem; }
+.product-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.product-desc {
+  font-size: 0.83rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.product-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.tag {
+  background: var(--green-pale);
+  color: var(--green-mid);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid #b2dfc0;
+}
+.product-perf {
+  background: var(--gray-50);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.perf-item { text-align: center; }
+.perf-val { font-size: 1.1rem; font-weight: 800; color: var(--green-dark); display: block; }
+.perf-label { font-size: 0.68rem; color: var(--gray-400); margin-top: 0.1rem; font-weight: 500; }
+
+/* ── STATS BAR ──────────────────────────────────────── */
+.stats-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.stat-item {
+  padding: 1.75rem 2rem;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-icon {
+  width: 44px; height: 44px;
+  background: var(--green-pale);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.stat-text .stat-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--green-dark);
+  display: block;
+  line-height: 1.1;
+}
+.stat-text .stat-label {
+  font-size: 0.78rem;
+  color: var(--gray-600);
+  margin-top: 0.15rem;
+  line-height: 1.4;
+}
+
+/* ── SHARED SECTION STYLES ──────────────────────────── */
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; }
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+  line-height: 1.15;
+  color: var(--green-dark);
+  margin-bottom: 0.9rem;
+  letter-spacing: -0.3px;
+}
+.section-title em { font-style: italic; color: var(--green-mid); }
+.section-lead {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+}
+
+/* ── PROBLEM ────────────────────────────────────────── */
+.problem-section { background: var(--white); border-bottom: 1px solid var(--border); }
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.problem-text p {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.problem-text p strong { color: var(--text); font-weight: 600; }
+.stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.stat-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.3rem;
+}
+.stat-card .big-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 2.1rem;
+  color: var(--green-dark);
+  line-height: 1;
+  display: block;
+}
+.stat-card .unit-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--green-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.15rem;
+  display: block;
+}
+.stat-card .desc {
+  font-size: 0.78rem;
+  color: var(--gray-400);
+  line-height: 1.5;
+  margin-top: 0.3rem;
+}
+.expert-quote {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--green-tint);
+  border-left: 3px solid var(--green-light);
+  border-radius: 0 8px 8px 0;
+}
+.expert-quote p { font-size: 0.87rem; color: var(--gray-600); line-height: 1.65; font-style: italic; }
+.expert-quote cite { font-size: 0.76rem; color: var(--green-mid); font-style: normal; font-weight: 600; margin-top: 0.5rem; display: block; }
+
+/* ── SOLUTION ───────────────────────────────────────── */
+.solution-section { background: var(--gray-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ingredient-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.ing-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.6rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.ing-card:hover { box-shadow: 0 6px 24px rgba(26,74,46,0.1); transform: translateY(-2px); }
+.ing-pct {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: var(--green-dark);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.ing-name { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.ing-desc { font-size: 0.82rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 0.9rem; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.benefit-strip {
+  background: var(--green-dark);
+  border-radius: 12px;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.benefit-item { display: flex; align-items: center; gap: 0.5rem; }
+.benefit-item .check-circle {
+  width: 22px; height: 22px;
+  background: rgba(77,175,114,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; color: #7dd99a; font-weight: 700;
+}
+.benefit-item span { font-size: 0.84rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+/* ── RESULTS ────────────────────────────────────────── */
+.results-section { background: var(--white); border-bottom: 1px solid var(--border); }
+.result-hero-card {
+  background: var(--green-dark);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.result-big-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 4rem;
+  color: #7dd99a;
+  line-height: 1;
+  white-space: nowrap;
+}
+.result-hero-text strong { display: block; color: var(--white); font-size: 1rem; margin-bottom: 0.4rem; font-weight: 700; }
+.result-hero-text p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.6; }
+.results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.result-card {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.result-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.result-card p { font-size: 0.83rem; color: var(--gray-600); line-height: 1.65; }
+.result-highlight {
+  margin-top: 0.9rem;
+  background: var(--green-pale);
+  border-radius: 6px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.78rem;
+  color: var(--green-mid);
+  font-weight: 600;
+  border: 1px solid #b2dfc0;
+}
+
+/* ── MARKET ─────────────────────────────────────────── */
+.market-section { background: var(--gray-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.tam-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.tam-card {
+  border-radius: 12px;
+  padding: 1.7rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.tam-card.tam { background: var(--green-dark); }
+.tam-card.sam { background: var(--green-mid); }
+.tam-card.som { background: var(--green-light); }
+.tam-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.6); margin-bottom: 0.7rem; }
+.tam-val { font-family: 'Fraunces', serif; font-weight: 900; font-size: 2.5rem; color: var(--white); line-height: 1; margin-bottom: 0.4rem; }
+.tam-desc { font-size: 0.79rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.cagr-note {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--gray-600);
+  padding: 1rem;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.cagr-note strong { color: var(--green-mid); }
+
+/* ── CUSTOMERS ──────────────────────────────────────── */
+.customers-section { background: var(--white); border-bottom: 1px solid var(--border); }
+.cust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.cust-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cust-card:hover { border-color: var(--green-light); transform: translateY(-2px); }
+.cust-status {
+  display: inline-block;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  margin-bottom: 0.8rem;
+}
+.s-promising { background: var(--green-pale); color: var(--green-mid); }
+.s-target { background: #e3f2fd; color: #1565c0; }
+.s-outreach { background: #fff3e0; color: #e65100; }
+.s-validated { background: #f3e5f5; color: #6a1b9a; }
+.cust-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+.cust-card p { font-size: 0.8rem; color: var(--gray-600); line-height: 1.6; }
+.survey-strip {
+  background: var(--gray-50);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  divide-x: 1px solid var(--border);
+  gap: 1.5rem;
+}
+.sv-item { text-align: center; padding: 0.5rem 0; }
+.sv-item + .sv-item { border-left: 1px solid var(--border); }
+.sv-pct { font-family: 'Fraunces', serif; font-weight: 900; font-size: 2rem; color: var(--green-dark); display: block; }
+.sv-label { font-size: 0.78rem; color: var(--gray-600); line-height: 1.45; margin-top: 0.2rem; }
+
+/* ── ROADMAP ────────────────────────────────────────── */
+.roadmap-section { background: var(--gray-50); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+}
+.step-time {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--green-mid);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.step-time::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green-light);
+  border-radius: 50%;
+  display: inline-block;
+}
+.step-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+.step-card p { font-size: 0.8rem; color: var(--gray-600); line-height: 1.65; }
+
+/* ── TEAM ───────────────────────────────────────────── */
+.team-section { background: var(--white); border-bottom: 1px solid var(--border); }
+.team-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-top: 2rem; }
+.team-member { text-align: center; }
+.avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--green-pale);
+  border: 2px solid var(--border);
+  margin: 0 auto 0.65rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 900; font-size: 1.3rem;
+  color: var(--green-dark);
+}
+.team-member .name { font-size: 0.84rem; font-weight: 600; color: var(--text); }
+
+/* ── CTA / CONTACT ──────────────────────────────────── */
+.cta-section {
+  background: var(--green-dark);
+  padding: 5.5rem 2.5rem;
+  text-align: center;
+}
+.cta-inner { max-width: 640px; margin: 0 auto; }
+.cta-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1rem;
+}
+.cta-heading {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.cta-heading em { font-style: italic; color: #7dd99a; }
+.cta-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 2rem; }
+.btn-cta-primary {
+  background: #7dd99a;
+  color: var(--green-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
+  display: inline-block;
+}
+.btn-cta-primary:hover { background: #a0e8b5; transform: translateY(-1px); }
+.cta-footnotes { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.8rem; flex-wrap: wrap; }
+.cta-footnote { font-size: 0.78rem; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 0.35rem; }
+.cta-footnote .dot { color: #7dd99a; }
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: #0e2818;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.78rem;
+}
+footer span { color: #7dd99a; }
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 2rem; }
+  .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .ingredient-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .tam-grid { grid-template-columns: 1fr; }
+  .cust-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .survey-strip { grid-template-columns: 1fr; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <strong>New:</strong> Ecosorb 70/30 blend outperforms silica gel in independent lab testing — <strong>11% moisture at 9 hours</strong> vs. 14.5% for silica gel.
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">🌿</div>
+    Ecosorb
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#proof">Results</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#customers">Customers</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="btn-nav-cta">Contact Us →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-section">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span> Sustainable Desiccant Technology</div>
+      <h1>The <em>greener</em> way to keep things dry.</h1>
+      <p class="hero-sub">Ecosorb replaces silica gel with a biodegradable, non-toxic, locally sourced alternative — without sacrificing performance.</p>
+      <div class="hero-actions">
+        <a href="#solution" class="btn-primary">See How It Works</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="check">✓</span> Biodegradable</div>
+        <div class="trust-item"><span class="check">✓</span> Non-toxic</div>
+        <div class="trust-item"><span class="check">✓</span> Locally sourced</div>
+        <div class="trust-item"><span class="check">✓</span> Odor-absorbing</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="product-visual">
+        <div class="product-orb">
+          <div class="product-orb-name">Eco<br>sorb</div>
+          <div class="product-orb-sub">Biodegradable</div>
+        </div>
+      </div>
+      <div class="product-meta">
+        <div class="product-name">Ecosorb 70/30 Desiccant</div>
+        <div class="product-desc">70% Diatomaceous Earth · 30% Activated Carbon · Kraft packaging · Binder-free formula</div>
+        <div class="product-tags">
+          <span class="tag">Food-safe</span>
+          <span class="tag">Compostable</span>
+          <span class="tag">PNW sourced</span>
+          <span class="tag">Odor control</span>
+        </div>
+        <div class="product-perf">
+          <div class="perf-item"><span class="perf-val">11%</span><span class="perf-label">Moisture @ 9hrs</span></div>
+          <div class="perf-item"><span class="perf-val">14.5%</span><span class="perf-label">Silica gel @ 9hrs</span></div>
+          <div class="perf-item"><span class="perf-val">100%</span><span class="perf-label">Compostable</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-icon">🗑️</div>
+    <div class="stat-text">
+      <span class="stat-num">200K</span>
+      <span class="stat-label">tons of silica gel waste per year</span>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-icon">♻️</div>
+    <div class="stat-text">
+      <span class="stat-num">90%</span>
+      <span class="stat-label">of people have no better option than the trash</span>
+    </div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-icon">📈</div>
+    <div class="stat-text">
+      <span class="stat-num">$1.3B</span>
+      <span class="stat-label">global desiccant market, growing at 5.2% CAGR</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
+  <div class="section-wrap">
+    <div class="problem-grid">
+      <div class="problem-text">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">Silica gel is <em>everywhere</em> — and it's a problem.</h2>
+        <p>Silica gel is the default desiccant found in shoes, electronics, food packaging, and more. But its production is either <strong>water-intensive</strong> or <strong>energy-intensive and toxic</strong>. Once used, nearly everyone throws it away — because no better option exists.</p>
+        <p>Its main competitor, bentonite clay, comes with its own problems: toxic mining waste and heavy metal contamination. The industry needs a genuine alternative.</p>
+        <div class="expert-quote">
+          <p>"The concern about the environmental cost of silica gel production is real and validated at a professional level."</p>
+          <cite>— Macy Zwanzig, AP Environmental Science Teacher & Redmond Environmental Sustainability Advisory Committee</cite>
+        </div>
+      </div>
+      <div>
+        <div class="stat-cards">
+          <div class="stat-card">
+            <span class="unit-label">Tons / year</span>
+            <span class="big-num">200K</span>
+            <div class="desc">Silica gel waste generated globally</div>
+          </div>
+          <div class="stat-card">
+            <span class="unit-label">Water per kg (wet method)</span>
+            <span class="big-num">40kg</span>
+            <div class="desc">Water consumed to produce 1 kg of silica gel</div>
+          </div>
+          <div class="stat-card">
+            <span class="unit-label">CO₂ per kg (dry method)</span>
+            <span class="big-num">4.4kg</span>
+            <div class="desc">Carbon emitted per kg in the dry process</div>
+          </div>
+          <div class="stat-card">
+            <span class="unit-label">Consumers surveyed</span>
+            <span class="big-num">90%</span>
+            <div class="desc">Simply throw silica gel in the trash</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section" id="solution">
+  <div class="section-wrap">
+    <div class="section-label">Our Solution</div>
+    <h2 class="section-title">Safe, green, and <em>cost-competitive.</em></h2>
+    <p class="section-lead">After testing multiple formulations — including cow dung, chitosan, and cellulose binders — we landed on a two-ingredient blend that outperforms silica gel, is fully biodegradable, and can be sourced locally from Washington and Oregon.</p>
+    <div class="ingredient-grid">
+      <div class="ing-card">
+        <div class="ing-pct">70%</div>
+        <div class="ing-name">Diatomaceous Earth</div>
+        <div class="ing-desc">Fossil-derived, food-safe, and abundantly available in the Pacific Northwest. Low-impact mining, minimal energy to process.</div>
+        <div class="tag-row">
+          <span class="tag">Biodegradable</span>
+          <span class="tag">Food-safe</span>
+          <span class="tag">Locally sourced</span>
+        </div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-pct">30%</div>
+        <div class="ing-name">Activated Carbon</div>
+        <div class="ing-desc">Made from agricultural waste with minimal water use. Actively eliminates odors — an advantage silica gel simply can't match.</div>
+        <div class="tag-row">
+          <span class="tag">Odor-absorbing</span>
+          <span class="tag">Ag. waste-derived</span>
+        </div>
+      </div>
+      <div class="ing-card">
+        <div class="ing-pct">✓</div>
+        <div class="ing-name">No harmful binders</div>
+        <div class="ing-desc">Our iterative process led us to a granular, binder-free format — simpler to produce and fully compostable at end of life.</div>
+        <div class="tag-row">
+          <span class="tag">Non-toxic</span>
+          <span class="tag">Compostable</span>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-strip">
+      <div class="benefit-item"><div class="check-circle">✓</div><span>Biodegradable</span></div>
+      <div class="benefit-item"><div class="check-circle">✓</div><span>Non-toxic</span></div>
+      <div class="benefit-item"><div class="check-circle">✓</div><span>Odor-absorbing</span></div>
+      <div class="benefit-item"><div class="check-circle">✓</div><span>Locally sourced (PNW)</span></div>
+      <div class="benefit-item"><div class="check-circle">✓</div><span>Cost-competitive</span></div>
+      <div class="benefit-item"><div class="check-circle">✓</div><span>Kraft-packaged</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="proof">
+  <div class="section-wrap">
+    <div class="section-label">Experiment Results</div>
+    <h2 class="section-title">We tested it. <em>Ecosorb wins.</em></h2>
+    <p class="section-lead">Using controlled mason jar tests with a hygrometer and moisture meter, we compared Ecosorb against silica gel and bentonite clay over 9+ hours.</p>
+    <div class="result-hero-card">
+      <div class="result-big-num">11%</div>
+      <div class="result-hero-text">
+        <strong>Best moisture reading after 9 hours — Ecosorb (Kraft packaging)</strong>
+        <p>Outperformed silica gel, bentonite clay, and our own Tyvek-packaged variant. Lower is better: silica gel reached 14.5% at the same timepoint.</p>
+      </div>
+    </div>
+    <div class="results-grid">
+      <div class="result-card">
+        <h3>Head-to-head vs. silica gel</h3>
+        <p>In a 72-hour test, our 70/30 Ecosorb blend outperformed silica gel at the 2-hour mark and remained competitive throughout. The Kraft-packaged version showed the strongest sustained performance.</p>
+        <div class="result-highlight">✓ Best performer at every measured interval</div>
+      </div>
+      <div class="result-card">
+        <h3>Expert-validated formulation</h3>
+        <p>Dr. Aruna Turaga, PhD in Analytical Chemistry from the Indian Institute of Science with six years managing an analytical lab in Seattle, reviewed our methodology and findings.</p>
+        <div class="result-highlight">✓ Validated by a credentialed chemistry expert</div>
+      </div>
+      <div class="result-card">
+        <h3>Packaging matters</h3>
+        <p>We tested two packaging types — Tyvek and Kraft paper. Kraft consistently outperformed, confirming material selection is as important as the desiccant blend itself.</p>
+        <div class="result-highlight">✓ Kraft selected as our production standard</div>
+      </div>
+      <div class="result-card">
+        <h3>Odor control advantage</h3>
+        <p>The activated carbon component gives Ecosorb an odor-absorption capability that silica gel simply doesn't have — a meaningful differentiator for footwear and food applications.</p>
+        <div class="result-highlight">✓ Absorbs moisture and eliminates odors simultaneously</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="market-section" id="market">
+  <div class="section-wrap">
+    <div class="section-label">Market Opportunity</div>
+    <h2 class="section-title">A <em>billion-dollar</em> market ready for disruption.</h2>
+    <p class="section-lead">Entering through the footwear market — no FDA approval required, and the industry's sustainability commitments make it a perfect first beachhead.</p>
+    <div class="tam-grid">
+      <div class="tam-card tam">
+        <div class="tam-label">TAM — Total Addressable Market</div>
+        <div class="tam-val">$1.3B</div>
+        <div class="tam-desc">Global desiccant market (2024, Precedence Research)</div>
+      </div>
+      <div class="tam-card sam">
+        <div class="tam-label">SAM — Serviceable Market</div>
+        <div class="tam-val">$390M</div>
+        <div class="tam-desc">Estimated shoe packaging desiccant share (~30% of TAM)</div>
+      </div>
+      <div class="tam-card som">
+        <div class="tam-label">SOM — Our Target</div>
+        <div class="tam-val">$58M</div>
+        <div class="tam-desc">US shoe desiccant market — our initial serviceable opportunity</div>
+      </div>
+    </div>
+    <div class="cagr-note">Market growing at <strong>5.2% CAGR</strong> — and sustainability regulations are accelerating the shift away from silica gel.</div>
+  </div>
+</section>
+
+<!-- CUSTOMERS -->
+<section class="customers-section" id="customers">
+  <div class="section-wrap">
+    <div class="section-label">Customer Validation</div>
+    <h2 class="section-title">Industry leaders <em>demand</em> sustainability.</h2>
+    <p class="section-lead">Nike, ASICS, PUMA, and Brooks have all made public commitments to reduce environmental impact across their supply chains. Ecosorb fits directly into that mission.</p>
+    <div class="cust-grid">
+      <div class="cust-card">
+        <span class="cust-status s-promising">Promising</span>
+        <h3>Whole Foods</h3>
+        <p>Investing heavily in sustainable packaging. Desiccants are near-unavoidable in packaged goods — a potential local customer identified.</p>
+      </div>
+      <div class="cust-card">
+        <span class="cust-status s-target">Primary Target</span>
+        <h3>Brooks Running</h3>
+        <p>Approved for SBTi Net-Zero Standard — targeting a 1.5°C trajectory. Our ideal first customer. Outreach is ongoing.</p>
+      </div>
+      <div class="cust-card">
+        <span class="cust-status s-outreach">Outreach</span>
+        <h3>DSW & Independents</h3>
+        <p>Automated systems have been a barrier. Next steps: direct outreach to leadership and in-person visits.</p>
+      </div>
+      <div class="cust-card">
+        <span class="cust-status s-validated">Validated</span>
+        <h3>Major League Cricket Academy</h3>
+        <p>National network of elite training hubs affiliated with the Seattle Orcas and MI New York.</p>
+      </div>
+      <div class="cust-card">
+        <span class="cust-status s-target">Sustainability Leader</span>
+        <h3>Nike</h3>
+        <p>Committed to reducing emissions and eliminating waste across their entire value chain — thousands of suppliers worldwide.</p>
+      </div>
+      <div class="cust-card">
+        <span class="cust-status s-outreach">In Scope</span>
+        <h3>ASICS & PUMA</h3>
+        <p>Both brands are actively developing products that reduce dependence on natural resources and minimize environmental impact.</p>
+      </div>
+    </div>
+    <div class="survey-strip">
+      <div class="sv-item">
+        <span class="sv-pct">70%</span>
+        <span class="sv-label">of 100 families surveyed are concerned about the environmental impact of packaging</span>
+      </div>
+      <div class="sv-item">
+        <span class="sv-pct">25%</span>
+        <span class="sv-label">cited safety as their primary concern with existing desiccant products</span>
+      </div>
+      <div class="sv-item">
+        <span class="sv-pct">90%</span>
+        <span class="sv-label">have no better option than throwing silica gel in the trash</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap-section" id="roadmap">
+  <div class="section-wrap">
+    <div class="section-label">Road to Market</div>
+    <h2 class="section-title">A clear path <em>forward.</em></h2>
+    <p class="section-lead">Six concrete milestones from prototype to market leader.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-time">2–3 Weeks</div>
+        <h3>Register LLC</h3>
+        <p>Reduce personal liability and direct future operations through the company.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-time">3 Months</div>
+        <h3>Further Testing</h3>
+        <p>Test on leather and shoe materials; measure odor levels to evaluate food-industry readiness.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-time">TBD</div>
+        <h3>Secure Customers</h3>
+        <p>Pursue Letters of Intent from shoe companies. Brooks Running is our top priority target.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-time">TBD</div>
+        <h3>Contract Suppliers</h3>
+        <p>Lock in raw ingredient supply chains, manufacturing partners, and shipping under NDA.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-time">Year 1</div>
+        <h3>FDA Approval</h3>
+        <p>Pursue food-grade certification with food-safe ink, materials, and required labeling.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-time">Year 3</div>
+        <h3>Secure IP</h3>
+        <p>File utility patent for our blend and processes. Trademark the Ecosorb brand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="section-wrap">
+    <div class="section-label">The Team</div>
+    <h2 class="section-title">Built by <em>six.</em></h2>
+    <p class="section-lead">We developed a more sustainable alternative to silica gel through extensive testing, collaboration, and continuous refinement — with a strong commitment to innovation and environmental responsibility.</p>
+    <div class="team-grid">
+      <div class="team-member"><div class="avatar">E</div><div class="name">Eshu</div></div>
+      <div class="team-member"><div class="avatar">A</div><div class="name">Akash</div></div>
+      <div class="team-member"><div class="avatar">R</div><div class="name">Rian</div></div>
+      <div class="team-member"><div class="avatar">S</div><div class="name">Sohum</div></div>
+      <div class="team-member"><div class="avatar">A</div><div class="name">Anika</div></div>
+      <div class="team-member"><div class="avatar">K</div><div class="name">Krish</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Get In Touch</div>
+    <h2 class="cta-heading">Ecosorb is <em>that option.</em></h2>
+    <p class="cta-sub">"The problem is not awareness. The problem is the lack of a better option." — We built it.</p>
+    <a href="mailto:hello@ecosorb.com" class="btn-cta-primary">Contact Us →</a>
+    <div class="cta-footnotes">
+      <div class="cta-footnote"><span class="dot">●</span> Biodegradable</div>
+      <div class="cta-footnote"><span class="dot">●</span> Non-toxic</div>
+      <div class="cta-footnote"><span class="dot">●</span> Cost-competitive</div>
+      <div class="cta-footnote"><span class="dot">●</span> Locally sourced</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 <span>Ecosorb</span>. A sustainable alternative to silica gel.</p>
+</footer>
+
+</body>
+</html>
